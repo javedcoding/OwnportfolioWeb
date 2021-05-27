@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boi Niye Ovijan</title>
+  <link rel="stylesheet" href="{% static 'portfolio\styleBase.css' %}">
+  <link rel="stylesheet" href="{% static 'portfolio\styleHome.css' %}">
+  <link rel="stylesheet" href="{% static 'sreed\styleSreed.css' %}">
+  <link href="{% static 'portfolio\fontawesome-free-5.15.3-web\css\all.css' %}" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Girassol&family=Newsreader:wght@300&family=Roboto+Condensed:wght@300&display=swap"
+    rel="stylesheet">
+</head>
+<body>
+  <!-- this is for the navigation bar -->
+  <div class="navBar">
+    <header>
+      <div class="wrapper">
+      <div class="logo">
+        <a href="#"><img src="{% static 'portfolio\logo134.png' %}" alt="logo"></a>
+      </div>
+    <nav>
+      <a href="{% url 'home' %}">home</a>
+      <a href="#">about</a>
+      <a href="{% url 'blog:all_blogs' %}">blogs</a>
+      <a href="#">contact</a>
+      <div class="dropdown">
+        <a href="">training</a>
+        <i class="fas fa-chevron-down"></i>
+        <div class="dropdown-content">
+          <a href="#">WPM</a>
+          <a href="#">Eye</a>
+          <a href="{% url 'sreed:sreedConf' %}">Speed</a>
+        </div>
+    </nav>
+  </div>
+  </header>
+  </div>
+
+  {% block content %} {% endblock %}
+
+  <!-- This is the footer for every page -->
+  <div class="footer">
+    <div class="footerPic">
+      <a href="" class='footerIcon'>
+        <i class="fab fa-facebook-square"></i>
+      </a>
+      <a href="" class='footerIcon'>
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="" class='footerIcon'>
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a href="" class='footerIcon'>
+        <i class="fab fa-github-square"></i>
+      </a>
+    </div>
+  </div>
+</body>
+</html>

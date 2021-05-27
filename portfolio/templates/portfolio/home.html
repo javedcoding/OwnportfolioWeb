@@ -1,0 +1,183 @@
+{% extends 'portfolio\base.html' %}
+{% block content %}
+{% load static %}
+<!-- this is for the banner -->
+<div class="mainBanner" id="mainBanner">
+  <div class="imgbanbtn imgbanbtnPrev" id="imgbanbtnPrev">
+  <i class="fas fa-angle-left"></i>
+  </div>
+<div class="imgban" id="imgban3">
+  <div class="imgbanBox">
+  <p>“Books are the quietest
+  <br>
+  and most constant of friends;
+  <br>
+  they are the most accessible
+  <br>
+  and wisest of counselors,
+  <br>
+  and the most patient of teachers.”</p>
+  <h2>– Charles W. Eliot</h2>
+</div>
+</div>
+<div class="imgban" id="imgban2">
+  <div class="imgbanBox">
+    <p>“Fill your house with stacks of books, in all the crannies and all the nooks.”</p>
+    <h2>– Dr Seuss</h2>
+  </div>
+</div>
+<div class="imgban" id="imgban1">
+  <div class="imgbanBox">
+    <p>“There is more treasure in books than in all the pirate’s loot on Treasure Island.”</p>
+    <h2>– Walt Disney</h2>
+  </div>
+</div>
+<div class="imgbanbtn imgbanbtnNext" id="imgbanbtnNext">
+  <i class="fas fa-angle-right"></i>
+</div>
+</div>
+
+
+<!-- this is the java script -->
+<script>
+  var bannerStatus = 1;
+  var bannerTimer = 4000;
+
+  window.onload = function () {
+    bannerLoop();
+  }
+
+  var startBannerLoop = setInterval(function () {
+    bannerLoop();
+  }, bannerTimer);
+
+  document.getElementById("mainBanner").onmouseenter  = function () {
+    clearInterval(startBannerLoop);
+  }
+
+  document.getElementById("mainBanner").onmouseleave = function () {
+    startBannerLoop = setInterval(function () {
+    bannerLoop();
+    }, bannerTimer);
+  }
+
+document.getElementById("imgbanbtnPrev").onclick = function () {
+  bannerLoop2();
+}
+
+document.getElementById("imgbanbtnNext").onclick = function () {
+  bannerLoop();
+}
+
+function bannerLoop() {
+  if (bannerStatus === 1) {
+    document.getElementById("imgban2").style.opacity = "0";
+
+    setTimeout(function () {
+      document.getElementById("imgban1").style.right = "0px";
+      document.getElementById("imgban1").style.zIndex = "1000";
+      document.getElementById("imgban2").style.right = "-1200px";
+      document.getElementById("imgban2").style.zIndex = "1500";
+      document.getElementById("imgban3").style.right = "1200px";
+      document.getElementById("imgban3").style.zIndex = "500";
+    }, 500);
+    setTimeout(function () {
+      document.getElementById("imgban2").style.opacity = "1";
+    }, 1000)
+    bannerStatus = 2;
+  }
+  else if (bannerStatus === 2) {
+    document.getElementById("imgban3").style.opacity = "0";
+
+    setTimeout(function () {
+      document.getElementById("imgban2").style.right = "0px";
+      document.getElementById("imgban2").style.zIndex = "1000";
+      document.getElementById("imgban3").style.right = "-1200px";
+      document.getElementById("imgban3").style.zIndex = "1500";
+      document.getElementById("imgban1").style.right = "1200px";
+      document.getElementById("imgban1").style.zIndex = "500";
+
+    }, 500);
+    setTimeout(function () {
+      document.getElementById("imgban3").style.opacity = "1";
+    }, 1000)
+    bannerStatus = 3;
+  }
+  else if (bannerStatus === 3) {
+    document.getElementById("imgban1").style.opacity = "0";
+
+    setTimeout(function () {
+      document.getElementById("imgban3").style.right = "0px";
+      document.getElementById("imgban3").style.zIndex = "1000";
+      document.getElementById("imgban1").style.right = "-1200px";
+      document.getElementById("imgban1").style.zIndex = "1500";
+      document.getElementById("imgban2").style.right = "1200px";
+      document.getElementById("imgban2").style.zIndex = "500";
+    }, 500);
+    setTimeout(function () {
+      document.getElementById("imgban1").style.opacity = "1";
+    }, 1000)
+    bannerStatus = 1;
+  }
+}
+function bannerLoop2() {
+  if (bannerStatus === 1) {
+    document.getElementById("imgban3").style.opacity = "0";
+
+    setTimeout(function () {
+      document.getElementById("imgban1").style.right = "0px";
+      document.getElementById("imgban1").style.zIndex = "1000";
+      document.getElementById("imgban3").style.right = "1200px";
+      document.getElementById("imgban3").style.zIndex = "1500";
+      document.getElementById("imgban2").style.right = "-1200px";
+      document.getElementById("imgban2").style.zIndex = "500";
+    }, 500);
+    setTimeout(function () {
+      document.getElementById("imgban3").style.opacity = "1";
+    }, 1000)
+    bannerStatus = 3;
+  }
+  else if (bannerStatus === 2) {
+    document.getElementById("imgban1").style.opacity = "0";
+
+    setTimeout(function () {
+      document.getElementById("imgban2").style.right = "0px";
+      document.getElementById("imgban2").style.zIndex = "1000";
+      document.getElementById("imgban1").style.right = "1200px";
+      document.getElementById("imgban1").style.zIndex = "1500";
+      document.getElementById("imgban3").style.right = "-1200px";
+      document.getElementById("imgban3").style.zIndex = "500";
+
+    }, 500);
+    setTimeout(function () {
+      document.getElementById("imgban1").style.opacity = "1";
+    }, 1000)
+    bannerStatus = 1;
+  }
+  else if (bannerStatus === 3) {
+    document.getElementById("imgban2").style.opacity = "0";
+
+    setTimeout(function () {
+      document.getElementById("imgban3").style.right = "0px";
+      document.getElementById("imgban3").style.zIndex = "1000";
+      document.getElementById("imgban2").style.right = "1200px";
+      document.getElementById("imgban2").style.zIndex = "1500";
+      document.getElementById("imgban1").style.right = "-1200px";
+      document.getElementById("imgban1").style.zIndex = "500";
+    }, 500);
+    setTimeout(function () {
+      document.getElementById("imgban2").style.opacity = "1";
+    }, 1000)
+    bannerStatus = 2;
+  }
+}
+</script>
+
+{% for project in projects %}
+<h2>{{ project.title }}</h2>
+<p>{{ project.description }}</p>
+<img src="{{project.image.url}}" alt="img">
+{% endfor %}
+<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque accusamus at, nemo autem totam odio aperiam quo et vitae ipsam non quaerat saepe, illum voluptas deleniti! Debitis reprehenderit et doloribus impedit neque a ex eius cupiditate ipsa illum velit beatae cumque mollitia facere esse totam voluptas, ut distinctio aspernatur autem, voluptatem iusto ipsum dolorem. Consequatur rem voluptas amet soluta odio nobis sit quo saepe voluptate corrupti est labore perspiciatis eius illo suscipit eaque magnam, ipsum quaerat dolore sed deserunt eum qui aliquam? Eum obcaecati placeat dolorem numquam nisi? Perspiciatis, dolor repudiandae dolores qui autem rerum tempora nesciunt odit numquam, corrupti tempore, non hic accusamus. Pariatur veniam natus, esse doloremque obcaecati aliquam molestiae in quos veritatis corporis nam, quisquam praesentium aspernatur non asperiores deserunt magnam iste, deleniti perferendis cum amet! Quos ipsa exercitationem, itaque nostrum vero odio ea? Eligendi impedit neque natus, amet laboriosam tempora iure corrupti possimus ratione aperiam iste similique provident nemo rem ex nostrum eveniet doloremque ducimus reiciendis fuga deserunt ipsa officia in? Facere unde, minus iusto doloremque ex id a vero alias architecto deleniti ipsa officiis ab sit similique quos expedita? Incidunt deleniti distinctio recusandae quos, facilis unde asperiores aut molestiae cumque itaque odio reprehenderit, eos ea excepturi quae iusto numquam earum? Doloremque excepturi cum quis libero. Quisquam at repellendus aspernatur necessitatibus perferendis laboriosam, voluptate vero magni excepturi ducimus qui impedit sunt corrupti nesciunt molestias doloremque distinctio laudantium suscipit enim porro nihil. Ratione, aspernatur mollitia. Perspiciatis expedita suscipit tempore iure velit ut molestiae. Reiciendis alias, praesentium perferendis beatae porro deleniti dolore delectus debitis saepe doloremque laborum sed vitae omnis, minima vel itaque nisi unde obcaecati? Mollitia quaerat numquam perferendis eaque nemo alias voluptas. Quae maiores dicta, suscipit praesentium quisquam, ipsum modi ut iste facilis exercitationem accusantium, incidunt debitis nihil! Id possimus aperiam quas, quidem mollitia quo dignissimos quod laudantium temporibus amet asperiores. Eum quaerat fuga totam, magnam iure aliquam ipsum nemo minima rerum consequuntur veritatis aliquid omnis deleniti dolorem temporibus similique esse. Qui repudiandae neque similique culpa dolorum inventore eveniet non nulla adipisci, expedita in, iste pariatur molestiae. Magni earum dicta explicabo voluptate dolore sit ipsam quis, mollitia veritatis sequi tenetur, illum eos quae consequuntur autem quos cum ut facere quidem ipsum odit. Temporibus accusamus iusto modi consequuntur quidem, quae laboriosam suscipit distinctio eius aliquam reprehenderit, recusandae nisi cum enim tempore praesentium nemo voluptates maiores qui mollitia maxime ad doloribus ratione magni. Magnam facere neque quam eum nobis beatae minus quas, cupiditate ipsa mollitia natus vitae veniam in doloremque ipsam, perferendis a, obcaecati corrupti pariatur molestias? Accusantium sed recusandae dolorem laboriosam ullam. Odit cum debitis modi accusamus dignissimos earum distinctio libero excepturi repellat aliquam? Dolorum ex quaerat ab cupiditate esse praesentium ea ut mollitia nisi minima eveniet sequi laboriosam numquam perferendis labore rerum, dolore aliquid dolores odio. Est totam repellat eum accusantium dicta officia, error blanditiis nihil obcaecati architecto. Ad nam beatae cupiditate sapiente officia magnam dolorem in libero veritatis, nisi praesentium similique illum! Fuga quis, similique accusamus fugiat at minus modi, eos, totam cum dolorem sunt? Soluta delectus deserunt repellat iusto deleniti necessitatibus neque quae quidem fugiat voluptates debitis doloremque rerum laudantium numquam, libero, vero unde, enim facilis incidunt. Voluptate, nostrum magni. Nam reprehenderit quod odit velit. Beatae aliquid officiis repudiandae, consequuntur nesciunt aliquam sapiente et a vero doloremque. Facere provident hic blanditiis totam tempora quos non fuga doloremque. Quas placeat perferendis, adipisci quam totam eaque est ratione eos mollitia voluptas, cumque consequuntur sunt nulla dolor harum perspiciatis expedita commodi repudiandae, voluptatibus necessitatibus fuga earum nam. Saepe praesentium nisi amet aperiam veniam, sed delectus illo autem. Assumenda dignissimos ratione magni in doloribus facere, ipsam asperiores reprehenderit harum, consequatur expedita. Quidem, commodi. Tempora laboriosam, quas necessitatibus officiis voluptate ad aliquam quo optio officia cupiditate commodi temporibus vel laborum magni deleniti ab hic architecto. Nihil et, magni dolores nulla impedit temporibus aliquam magnam aut non laborum ipsum corporis modi unde, dignissimos totam quasi possimus sunt vero quae corrupti voluptate odio mollitia! Expedita earum sit atque obcaecati quo laborum ducimus et vitae vel, consequatur dolore est error modi, officia dolorum maiores adipisci itaque voluptatem consequuntur saepe optio? Corporis, odio iure. Modi accusantium corporis autem? Cupiditate dignissimos natus facere? Nihil suscipit qui aperiam aliquid nisi, eveniet vel amet accusamus numquam quod aut voluptatibus inventore adipisci sapiente nulla dolores. Repellat neque repellendus odit itaque molestias quo est deserunt assumenda, autem blanditiis totam? Porro distinctio, possimus facere optio doloribus iure magni sit excepturi temporibus facilis saepe sunt nemo quidem consequatur expedita corporis aliquam tempore sed recusandae dolore impedit obcaecati delectus! Alias ab totam asperiores tenetur numquam facere rerum doloribus quaerat magnam fuga voluptatibus distinctio sunt laudantium dicta vel nobis impedit, culpa maxime nostrum dolorem reiciendis? Obcaecati reprehenderit illum distinctio cum reiciendis vitae ex quas numquam accusamus ea recusandae, iure nam molestias! Beatae soluta temporibus cum neque provident assumenda sequi sit dolorem, facilis perferendis laborum atque quae. Mollitia minus, eveniet dolor ut neque porro architecto voluptas sed quia quae a obcaecati qui aliquid molestias nisi magnam vel delectus eum fuga laborum modi rerum! Cupiditate soluta autem a, sed aspernatur praesentium sit magni aperiam obcaecati vel iste amet tenetur architecto esse ipsa? Libero porro neque nemo consequuntur! Soluta deserunt, doloremque tempora dolor praesentium cum iste perspiciatis rem consectetur quis quasi facere at quam! Repellendus, incidunt amet, repudiandae pariatur quam modi aperiam odit exercitationem id, doloribus est assumenda magni. Quo unde dolore fuga. Officiis ullam earum accusamus in quas perferendis repudiandae amet aliquam quis doloremque. Enim veniam facilis rerum labore id voluptatibus distinctio voluptas eligendi ad consequuntur sequi, ipsum sint porro. Sapiente hic iure dolorum odio nemo soluta, laboriosam esse enim ab, nostrum in facere repudiandae natus omnis. Quas beatae aspernatur deleniti laborum, reprehenderit animi iusto voluptatibus suscipit ab earum nesciunt eligendi, perspiciatis dolorum magnam quis sed, repellendus eius. Eius dicta eveniet saepe mollitia quasi amet voluptate cumque. Impedit nam facilis totam saepe similique aliquam quam voluptate minima praesentium maxime officiis vel cupiditate eum itaque cumque, nostrum fugit nulla ea, fuga quo provident expedita ipsa inventore? Natus similique vitae nesciunt commodi quasi neque quae suscipit.</p>
+
+{% endblock %}

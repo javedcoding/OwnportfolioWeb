@@ -1,0 +1,116 @@
+{% extends 'portfolio\base.html' %}
+{% block content %}
+{% load static %}
+<!-- this is for the banner -->
+<div class="sreedBanner" id="sreedBanner">
+  <div class="sreedImgban" id="sreedImgban4">
+    <div class="sreedImgbanBox" id="sreedImgbanBox1">
+      <p>The average college student can read 250 words per minute</p>
+    </div>
+    <div class="sreedImgbanBox" id="sreedImgbanBox2">
+      <p>A good reader can read 400 words per minute</p>
+    </div>
+    <div class="sreedImgbanBox" id="sreedImgbanBox3">
+      <p>An average novel contains 120,000 words</p>
+    </div>
+    <div class="sreedImgbanBox" id="sreedImgbanBox4">
+      <p>Spend less time and acquire more</p>
+    </div>
+  </div>
+</div>
+<script>
+  var imgbanStatus = 1;
+    var imgbanTimer = 4000;
+    window.onload = function () {
+      imgbanLoop();
+    }
+    var startimgbanLoop = setInterval(function () {
+      imgbanLoop();
+    }, imgbanTimer);
+    document.getElementById("sreedBanner").onmouseenter = function () {
+      clearInterval(startimgbanLoop);
+    }
+    document.getElementById("sreedBanner").onmouseleave = function () {
+      startimgbanLoop = setInterval(function () {
+        imgbanLoop();
+      }, imgbanTimer);
+    }
+
+    function imgbanLoop() {
+      if (imgbanStatus === 1) {
+        document.getElementById("sreedImgbanBox1").style.opacity = "1";
+        document.getElementById("sreedImgbanBox2").style.opacity = "0";
+        document.getElementById("sreedImgbanBox3").style.opacity = "0";
+        document.getElementById("sreedImgbanBox4").style.opacity = "0";
+
+        setTimeout(function () {
+          document.getElementById("sreedImgbanBox1").style.opacity = "0";
+        }, 3000)
+        imgbanStatus = 2;
+      }
+      else if (imgbanStatus === 2) {
+        document.getElementById("sreedImgbanBox1").style.opacity = "0";
+        document.getElementById("sreedImgbanBox2").style.opacity = "1";
+        document.getElementById("sreedImgbanBox3").style.opacity = "0";
+        document.getElementById("sreedImgbanBox4").style.opacity = "0";
+
+        setTimeout(function () {
+          document.getElementById("sreedImgbanBox2").style.opacity = "0";
+        }, 3000)
+        imgbanStatus = 3;
+      }
+      else if (imgbanStatus === 3) {
+        document.getElementById("sreedImgbanBox1").style.opacity = "0";
+        document.getElementById("sreedImgbanBox2").style.opacity = "0";
+        document.getElementById("sreedImgbanBox3").style.opacity = "1";
+        document.getElementById("sreedImgbanBox4").style.opacity = "0";
+
+        setTimeout(function () {
+          document.getElementById("sreedImgbanBox3").style.opacity = "0";
+        }, 3000)
+        imgbanStatus = 4;
+      }
+      else if (imgbanStatus === 4) {
+        document.getElementById("sreedImgbanBox1").style.opacity = "0";
+        document.getElementById("sreedImgbanBox2").style.opacity = "0";
+        document.getElementById("sreedImgbanBox3").style.opacity = "0";
+        document.getElementById("sreedImgbanBox4").style.opacity = "1";
+
+        setTimeout(function () {
+          document.getElementById("sreedImgbanBox4").style.opacity = "0";
+        }, 3000)
+        imgbanStatus = 1;
+      }
+    }
+</script>
+<br>
+<!-- From here this will be rest of the page -->
+<div class="howToTrain">
+  <div class="howToTrainHeading">
+    <h1>How To Train For Speed Reading</h1>
+  </div>
+  <p class="howToTrainPara">To train yourself use this page every day. Start with a constant word per minute from 100 to 500 (like 200 wpm is the average reader's speed).Train each day with one level of text (starting from level 1). Select how many Words At a Time to read (start from 1 word and go for 3 words eventually). When you feel confortable with current settings increase Words At a Time then Level of Text and finally Words Per Minute </p>
+</div>
+<br>
+<div class="selection">
+  <h2>Selection Pane</h2>
+  <form action="">
+    <label for="level">Text Level</label>
+    <select name="textLevel" id="level">
+      <!-- Here will be a for loop for available text level -->
+    </select>
+    <br>
+    <label for="wpm">Words Per Minute (100-500)</label>
+    <input id="wpm" type="number" placeholder="Put any integer">
+    <br>
+    <div class="wordSelection">
+      <label for="wordSelect">Select Word/Words At A Time</label>
+      <br>
+      <input type="checkbox" name="oneWord" id="wordSelect" class='wordSelect'>One Word</input>
+      <input type="checkbox" name="twoWords" id="wordSelect" class='wordSelect'>Two Words</input>
+      <input type="checkbox" name="threeWords" id="wordSelect" class='wordSelect'>Three Words</input>
+    </div>
+    <button id="submit">Submit</button>
+  </form>
+</div>
+{% endblock %}

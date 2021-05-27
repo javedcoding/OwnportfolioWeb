@@ -1,0 +1,95 @@
+{% load static %}
+
+/* this is for the banner css*/
+.mainBanner {
+	margin: 0 auto;
+	width: 60%;
+	height: 50rem;
+	background-color: #fff;
+	overflow: hidden;
+	position: relative;
+	text-align: center;
+}
+.mainBanner .imgban {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 6.5rem;
+	transition: all ease-in-out 500ms;
+	-webkit-transition: all ease-in-out 500ms;
+	-moz-transition: all ease-in-out 500ms;
+	-o-transition: all ease-in-out 500ms;
+}
+.mainBanner #imgban3 {
+	background-image: url('Banner2.jpg');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+.mainBanner #imgban2 {
+	background-image: url('Banner3.jpg');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+.mainBanner #imgban1 {
+	background-image: url('Banner1.jpg');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+.imgbanbtn {
+	width: 1.25rem;
+	height: 1.25rem;
+	background-color: #fff;
+	border-radius: 0.25rem;
+	position: absolute;
+	top: 25rem;
+	z-index: 1800;
+	opacity: 0.5;
+	cursor: pointer;
+}
+.imgbanbtn:hover {
+	opacity: 1;
+}
+.imgbanbtnPrev {
+	left: 0.3125rem;
+	background-size: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+.imgbanbtnNext {
+	right: 0.3125rem;
+	background-size: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+.mainBanner .imgbanBox h2 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 2.5rem;
+}
+.mainBanner .imgbanBox p {
+	padding-top: 0.375rem;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 1.25rem;
+	font-style: italic;
+}
+.mainBanner #imgban3 .imgbanBox {
+	padding-top: 0.3125rem;
+	padding-right: 40.625rem;
+	color: black;
+}
+.mainBanner #imgban2 .imgbanBox {
+	padding-top: 9.375rem;
+	padding-left: 18.75rem;
+	padding-right: 3.125rem;
+	color: black;
+}
+.mainBanner #imgban1 .imgbanBox {
+	padding-top: 21.875rem;
+	padding-right: 18.75rem;
+	padding-left: 1.25rem;
+	float: left;
+	text-align: right;
+	color: black;
+}
